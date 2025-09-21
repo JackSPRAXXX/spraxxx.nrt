@@ -1,37 +1,45 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>SPRAXXX Network</title>
-  <link rel="stylesheet" href="style.css">
+  <meta name="description" content="SPRAXXX Network — verify once, live free forever. Divine Court tools: DDI, RRI, and testimony intake." />
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
   <header>
     <h1>SPRAXXX Network</h1>
     <p>Verify once. Live free forever.</p>
+    <nav aria-label="Primary" class="topnav">
+      <a href="/">Home</a>
+      <a href="/ddi.html">DDI</a>
+      <a href="/rri.html">RRI</a>
+      <a href="/court.html">Divine Court</a>
+    </nav>
   </header>
 
   <main>
-    <section id="verify">
+    <section id="verify" class="card">
       <h2>Verify a Credential</h2>
       <p>Enter Credential ID or scan a SPRAXXX QR below:</p>
-      <input type="text" placeholder="Enter Credential ID">
-      <button>Verify</button>
-      <div id="result"></div>
+      <label for="cred" class="sr">Credential ID</label>
+      <input id="cred" type="text" placeholder="Enter Credential ID" inputmode="numeric" />
+      <button id="verifyBtn">Verify</button>
+      <div id="result" role="status" aria-live="polite"></div>
+    </section>
+
+    <section class="card" style="margin-top:24px">
+      <h2>Divine Court Tools</h2>
+      <p>Measure harm, balance responsibility, and submit testimony.</p>
+      <nav class="toolnav">
+        <a class="btn" href="/ddi.html">Dignity Degradation Index</a>
+        <a class="btn" href="/court.html">Divine Court</a>
+        <a class="btn" href="/rri.html">Rapid Responsibility Index</a>
+      </nav>
     </section>
   </main>
 
-  <section class="card" style="margin:24px 0">
-  <h2>Divine Court Tools</h2>
-  <p>Measure harm, balance responsibility, and submit testimony.</p>
-  <nav style="display:flex; gap:12px; flex-wrap:wrap">
-    <a class="btn" href="/ddi.html">Dignity Degradation Index</a>
-    <a class="btn" href="/court.html">Divine Court</a>
-    <a class="btn" href="/rri.html">Rapid Responsibility Index</a>
-  </nav>
-
-  </section>
   <footer>
     <p>SPRAXXX — enough of their sh*t, it’s our turn.</p>
   </footer>
