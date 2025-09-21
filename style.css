@@ -1,4 +1,4 @@
-/* Reset some default browser styling */
+/* ============ Base Reset (yours, preserved) ============ */
 * {
   margin: 0;
   padding: 0;
@@ -6,98 +6,154 @@
   font-family: "Arial Black", Arial, sans-serif;
 }
 
+/* ============ Theme ============ */
+:root{
+  --bg:#0d0d0d;            /* almost black */
+  --fg:#e6e6e6;            /* light gray text */
+  --muted:#999;
+  --edge:#00ffcc;          /* neon cyan/green */
+  --pop:#ff0099;           /* neon pink */
+  --panel:#1a1a1a;         /* card bg (original) */
+  --panel-2:#141414;       /* alt card bg */
+  --line:rgba(0,255,204,.25);
+}
+
 body {
-  background-color: #0d0d0d; /* almost black */
-  color: #e6e6e6; /* light gray text */
+  background-color: var(--bg);
+  color: var(--fg);
   display: flex;
   flex-direction: column;
   min-height: 100vh;
 }
 
+/* ============ Header ============ */
 header {
   text-align: center;
   padding: 2rem 1rem;
-  border-bottom: 2px solid #00ffcc; /* neon accent */
+  border-bottom: 2px solid var(--edge);
 }
-
 header h1 {
   font-size: 2.5rem;
-  color: #00ffcc; /* neon green/blue */
+  color: var(--edge);
   margin-bottom: 0.5rem;
 }
-
 header p {
   font-size: 1.2rem;
-  color: #999;
+  color: var(--muted);
+}
+.topnav{
+  display:flex; justify-content:center; gap:12px; flex-wrap:wrap; margin-top:.75rem;
+}
+.topnav a{
+  display:inline-block; padding:.5rem .8rem; color:var(--edge); text-decoration:none;
+  border:2px solid var(--edge); border-radius:10px;
+  background:linear-gradient(180deg, rgba(0,255,204,.08), rgba(0,255,204,.02));
+  transition:transform .15s, background .2s, border-color .2s, color .2s, box-shadow .2s;
+}
+.topnav a:hover{
+  color:var(--bg); background:var(--pop); border-color:var(--pop); box-shadow:0 0 14px var(--pop);
+  transform:translateY(-1px);
 }
 
-main {
-  flex: 1;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 2rem;
+/* ============ Main Layout ============ */
+main{
+  flex:1;
+  display:flex;
+  flex-direction:column;        /* stack verify + tools */
+  align-items:center;
+  gap:24px;
+  padding:2rem 1rem;
+  width:100%;
 }
 
-#verify {
-  background: #1a1a1a;
-  border: 2px solid #00ffcc;
+/* ============ Card (new, integrates with your look) ============ */
+.card{
+  background: var(--panel-2);
+  border: 2px solid var(--edge);
+  border-radius: 12px;
+  padding: 1.5rem;
+  width: min(900px, 100%);
+  box-shadow: 0 0 20px rgba(0, 255, 204, 0.18);
+}
+.card h2{
+  color: var(--edge);
+  margin-bottom: .5rem;
+}
+
+/* ============ Verify Card (your original rules, kept & adjusted) ============ */
+#verify{
+  background: var(--panel);
+  border: 2px solid var(--edge);
   border-radius: 12px;
   padding: 2rem;
   text-align: center;
-  max-width: 400px;
-  width: 100%;
+  width: min(520px,100%);
   box-shadow: 0 0 20px rgba(0, 255, 204, 0.3);
 }
+#verify h2 { color: var(--edge); margin-bottom: 1rem; }
+#verify p { color: var(--muted); margin-bottom: .5rem; }
 
-#verify h2 {
-  color: #00ffcc;
-  margin-bottom: 1rem;
-}
-
-#verify input {
+#verify input{
   width: 100%;
   padding: 0.8rem;
   margin: 1rem 0;
-  border: 2px solid #00ffcc;
+  border: 2px solid var(--edge);
   border-radius: 8px;
-  background: #0d0d0d;
-  color: #e6e6e6;
+  background: var(--bg);
+  color: var(--fg);
   font-size: 1rem;
 }
-
-#verify input:focus {
+#verify input:focus{
   outline: none;
-  border-color: #ff0099; /* neon pink highlight */
-  box-shadow: 0 0 8px #ff0099;
+  border-color: var(--pop);
+  box-shadow: 0 0 8px var(--pop);
 }
-
-#verify button {
-  background: #00ffcc;
-  color: #0d0d0d;
+#verify button{
+  background: var(--edge);
+  color: var(--bg);
   font-weight: bold;
   border: none;
   border-radius: 8px;
   padding: 0.8rem 1.5rem;
   cursor: pointer;
   font-size: 1rem;
-  transition: background 0.3s, transform 0.2s;
+  transition: background 0.3s, transform 0.2s, box-shadow .2s;
 }
-
-#verify button:hover {
-  background: #ff0099;
+#verify button:hover{
+  background: var(--pop);
   transform: scale(1.05);
+  box-shadow:0 0 16px var(--pop);
+}
+#result{ margin-top: 1rem; font-size: 1.1rem; }
+
+/* ============ Tools Nav (buttons match theme) ============ */
+.toolnav{ display:flex; gap:12px; flex-wrap:wrap; margin-top:.75rem; }
+a.btn{
+  display:inline-block;
+  padding:.7rem 1.1rem;
+  border:2px solid var(--edge);
+  border-radius:10px;
+  color:var(--edge);
+  text-decoration:none;
+  background:linear-gradient(180deg, rgba(0,255,204,.08), rgba(0,255,204,.02));
+  transition:transform .15s, background .2s, border-color .2s, color .2s, box-shadow .2s;
+}
+a.btn:hover{
+  color:var(--bg);
+  background: var(--pop);
+  border-color: var(--pop);
+  box-shadow: 0 0 16px var(--pop);
+  transform: translateY(-1px);
 }
 
-#result {
-  margin-top: 1rem;
-  font-size: 1.1rem;
-}
-
+/* ============ Footer ============ */
 footer {
   text-align: center;
   padding: 1rem;
-  border-top: 2px solid #00ffcc;
+  border-top: 2px solid var(--edge);
   font-size: 0.9rem;
   color: #777;
 }
+
+/* ============ A11y helper ============ */
+.sr{ position:absolute; left:-9999px; }
